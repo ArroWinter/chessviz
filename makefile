@@ -7,6 +7,8 @@ SRC = src/p.h src/P.h src/board.h src/rook.h src/horse.h src/el.h src/king.h src
 
 all: bin build test default 
 
+test: bin/chess_test
+
 default: bin/chess
 
 bin/chess: build/main.o $(BUILD)
@@ -45,7 +47,6 @@ bin/chess_test:build/main_test.o $(BUILD)
 build/main_test.o:test/main.c 
 	gcc $(CFLAGS) -I thirdparty -I src -c test/main.c -o build/main_test.o
 
-
 build:
 	mkdir build
 
@@ -53,4 +54,4 @@ bin:
 	mkdir bin
 
 clean:
-	-rm -rf build/*.o
+-rm -rf build/*.o
