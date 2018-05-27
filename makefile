@@ -5,7 +5,7 @@ SRC = src/p.h src/P.h src/board.h src/rook.h src/horse.h src/el.h src/king.h src
 
 .PHONY: clean
 
-all: bin build default 
+all: bin build test default 
 
 default: bin/chess
 
@@ -38,6 +38,13 @@ build/king.o: src/king.c src/king.h
 
 build/queen.o: src/queen.c src/queen.h
 	gcc $(CFLAGS) src/queen.c -o build/queen.o
+
+bin/chess_test:build/main_test.o $(BUILD)
+	gcc $(FLAGS) build/main_test.o $(BUILD) -o bin/chess_test
+
+build/main_test.o:test/main.c 
+	gcc $(CFLAGS) -I thirdparty -I src -c test/main.c -o build/main_test.o
+
 
 build:
 	mkdir build
