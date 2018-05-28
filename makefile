@@ -48,7 +48,7 @@ build/main_test.o:test/main.c
 	gcc $(CFLAGS) -I thirdparty -I src -c test/main.c -o build/main_test.o
 
 build:
-	mkdir build
+	mkdir build//travis
 
 bin:
 	mkdir bin
